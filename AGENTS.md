@@ -33,3 +33,5 @@ use the editor.
 
 - All portfolio copy lives in `src/content/portfolio.ts`; page sections only render that data, so text edits never touch layout code.
 - Visual tone is controlled solely by the color/font tokens in `src/styles.css` (`:root` + `@theme inline`); components use semantic classes only, so a re-theme is a token change.
+- Scroll motion goes through `src/components/portfolio/Reveal.tsx` (IntersectionObserver + the `reveal` utility, disabled under prefers-reduced-motion), so motion stays uniform and subtle.
+- Uploaded media are CDN assets referenced via `src/assets/*.asset.json` pointers imported in `src/content/portfolio.ts`; no binaries in the repo.

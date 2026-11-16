@@ -1,4 +1,16 @@
 // 포트폴리오 문구는 모두 이 파일에서 수정합니다.
+import {
+  FileSpreadsheet,
+  Gamepad2,
+  HeartHandshake,
+  Languages,
+  UsersRound,
+  Workflow,
+} from "lucide-react";
+
+import heroLarge from "@/assets/riverside-sky-1672.webp.asset.json";
+import heroSmall from "@/assets/riverside-sky-960.webp.asset.json";
+
 export const profile = {
   name: "박정우",
   role: "게임 사업 PM · 게임 운영",
@@ -10,6 +22,11 @@ export const hero = {
   eyebrow: "Game Business PM · Live Operations",
   title: ["박정우"],
   lead: "플레이어가 오래 머물고 싶은 게임 경험을 고민하는 운영 인재입니다. 현장 운영 경험과 고객 응대 역량을 바탕으로, 게임의 세계관과 플레이 경험을 더 풍부하게 만드는 게임 사업 PM·운영 담당자가 되고 싶습니다.",
+  image: {
+    large: heroLarge.url,
+    small: heroSmall.url,
+    alt: "맑은 하늘 아래 구름과 물길이 이어지는 강변 도시 풍경",
+  },
   card: {
     eyebrow: "Core Strengths",
     title: "핵심 역량",
@@ -23,12 +40,12 @@ export const about = [
 ];
 
 export const strengths = [
-  { title: "고객 중심 운영", body: "다양한 고객 응대 경험을 통한 빠른 상황 파악과 문제 대응" },
-  { title: "운영 프로세스 개선", body: "시스템 변경에 맞춘 신규 업무 매뉴얼 제작 경험" },
-  { title: "현장 조율과 교육", body: "후임 교육, 업무 조정, 매니저 대행 경험" },
-  { title: "데이터·문서 활용", body: "엑셀 기반 수량 관리 및 운영 업무 보조 경험" },
-  { title: "일본어 커뮤니케이션", body: "일본 현지 근무와 호텔 업무를 통한 일본어 안내·예약·인수인계 경험" },
-  { title: "게임 이해도", body: "라이브서비스 게임을 오래 플레이하며 콘텐츠, 세계관, 유저 경험에 관심 보유" },
+  { icon: HeartHandshake, title: "고객 중심 운영", body: "다양한 고객 응대 경험을 통한 빠른 상황 파악과 문제 대응" },
+  { icon: Workflow, title: "운영 프로세스 개선", body: "시스템 변경에 맞춘 신규 업무 매뉴얼 제작 경험" },
+  { icon: UsersRound, title: "현장 조율과 교육", body: "후임 교육, 업무 조정, 매니저 대행 경험" },
+  { icon: FileSpreadsheet, title: "데이터·문서 활용", body: "엑셀 기반 수량 관리 및 운영 업무 보조 경험" },
+  { icon: Languages, title: "일본어 커뮤니케이션", body: "일본 현지 근무와 호텔 업무를 통한 일본어 안내·예약·인수인계 경험" },
+  { icon: Gamepad2, title: "게임 이해도", body: "라이브서비스 게임을 오래 플레이하며 콘텐츠, 세계관, 유저 경험에 관심 보유" },
 ];
 
 export const experiences = [
