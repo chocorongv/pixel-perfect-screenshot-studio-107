@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All portfolio copy lives in `src/content/portfolio.ts`; page sections only render that data, so text edits never touch layout code.
+- Visual tone is controlled solely by the color/font tokens in `src/styles.css` (`:root` + `@theme inline`); components use semantic classes only, so a re-theme is a token change.
