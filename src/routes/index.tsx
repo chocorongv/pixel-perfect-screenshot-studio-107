@@ -161,32 +161,59 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="bg-background">
-      <div className="mx-auto max-w-5xl px-6 pt-24 pb-24 md:pt-36 md:pb-32">
-        <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-          {hero.eyebrow}
-        </p>
-        <h1 className="mt-6 text-[1.65rem] leading-tight sm:text-4xl font-bold tracking-tight text-foreground md:text-5xl md:leading-[1.2]">
-          {hero.title.map((line, i) => (
-            <span key={line} className={`block ${i === hero.title.length - 1 ? "text-primary" : ""}`}>
-              {line}
-            </span>
-          ))}
-        </h1>
-        <p className="mt-8 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
-          {hero.lead}
-        </p>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button asChild size="lg">
-            <a href="#experience">
-              경험 보기 <ArrowDown />
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <a href="#contact">연락하기</a>
-          </Button>
+      <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 pt-20 pb-20 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:pt-24 md:pb-24 lg:gap-16">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+            {hero.eyebrow}
+          </p>
+          <h1 className="mt-5 text-5xl font-bold tracking-tight text-primary sm:text-6xl md:text-6xl lg:text-7xl">
+            {hero.title.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
+          <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground md:text-lg">
+            {hero.lead}
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild size="lg">
+              <a href="#experience">
+                경험 보기 <ArrowDown />
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a href="#contact">연락하기</a>
+            </Button>
+          </div>
         </div>
+        <StrengthCard />
       </div>
     </section>
+  );
+}
+
+function StrengthCard() {
+  return (
+    <aside className="rounded-xl border border-border bg-card p-6 shadow-sm md:p-7">
+      <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+        {hero.card.eyebrow}
+      </p>
+      <h2 className="mt-2 text-lg font-bold tracking-tight text-foreground">{hero.card.title}</h2>
+      <ul className="mt-6 space-y-4 border-t border-border pt-6">
+        {strengths.map((s, i) => (
+          <li key={s.title} className="flex gap-3">
+            <span className="mt-0.5 text-xs font-semibold text-primary tabular-nums">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-foreground">{s.title}</p>
+              <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </aside>
   );
 }
 
