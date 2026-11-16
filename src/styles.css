@@ -72,44 +72,31 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-sky: var(--sky);
-  --color-teal: var(--teal);
-  --color-navy: var(--navy);
-  --shadow-soft: var(--elevation-soft);
-  --shadow-lifted: var(--elevation-lifted);
 }
 
 :root {
-  /* 디자인 톤은 이 블록의 값만 바꾸면 전체에 반영됩니다. 키워드: 푸른 여정 · 발견 · 성장 · 신뢰 */
-  --radius: 0.75rem;
-  --background: oklch(0.995 0.003 230);
-  --surface: oklch(0.972 0.014 228);
-  --foreground: oklch(0.25 0.05 258);
+  /* 디자인 톤은 이 블록의 값만 바꾸면 전체에 반영됩니다. */
+  --radius: 0.5rem;
+  --background: oklch(0.995 0.002 250);
+  --surface: oklch(0.975 0.004 250);
+  --foreground: oklch(0.22 0.03 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.05 258);
+  --card-foreground: oklch(0.22 0.03 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.05 258);
-  --primary: oklch(0.43 0.15 258);
-  --primary-foreground: oklch(0.99 0.004 230);
-  --secondary: oklch(0.955 0.018 232);
-  --secondary-foreground: oklch(0.36 0.12 258);
-  --muted: oklch(0.96 0.01 235);
-  --muted-foreground: oklch(0.46 0.03 252);
-  --accent: oklch(0.95 0.03 205);
-  --accent-foreground: oklch(0.4 0.08 210);
+  --popover-foreground: oklch(0.22 0.03 260);
+  --primary: oklch(0.32 0.08 260);
+  --primary-foreground: oklch(0.98 0.005 250);
+  --secondary: oklch(0.96 0.008 250);
+  --secondary-foreground: oklch(0.28 0.06 260);
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.48 0.025 258);
+  --accent: oklch(0.94 0.02 255);
+  --accent-foreground: oklch(0.32 0.08 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.018 245);
-  --input: oklch(0.87 0.022 245);
-  --ring: oklch(0.43 0.15 258);
-  /* 브랜드 보조 색 */
-  --sky: oklch(0.72 0.13 238);
-  --teal: oklch(0.6 0.1 200);
-  --navy: oklch(0.26 0.07 260);
-  --elevation-soft: 0 1px 2px color-mix(in oklab, var(--navy) 5%, transparent),
-    0 10px 28px -16px color-mix(in oklab, var(--primary) 22%, transparent);
-  --elevation-lifted: 0 2px 6px color-mix(in oklab, var(--navy) 8%, transparent),
-    0 24px 48px -24px color-mix(in oklab, var(--navy) 38%, transparent);
+  --border: oklch(0.91 0.008 255);
+  --input: oklch(0.88 0.01 255);
+  --ring: oklch(0.32 0.08 260);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -175,71 +162,5 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     word-break: keep-all;
-  }
-}
-
-/* 첫 화면: 왼쪽(모바일은 위쪽)만 옅은 네이비로 덮어 글자를 읽기 쉽게, 하늘은 그대로 */
-@utility hero-overlay {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--navy) 50%, transparent) 0%,
-    color-mix(in oklab, var(--navy) 24%, transparent) 50%,
-    color-mix(in oklab, var(--navy) 6%, transparent) 100%
-  );
-  @media (width >= 48rem) {
-    background: linear-gradient(
-      90deg,
-      color-mix(in oklab, var(--navy) 52%, transparent) 0%,
-      color-mix(in oklab, var(--navy) 30%, transparent) 38%,
-      color-mix(in oklab, var(--navy) 0%, transparent) 70%
-    );
-  }
-}
-
-@utility hero-text-shadow {
-  text-shadow: 0 1px 18px color-mix(in oklab, var(--navy) 40%, transparent);
-}
-
-@utility bg-deep {
-  background-image: linear-gradient(135deg, var(--primary) 0%, var(--navy) 100%);
-}
-
-/* 구름이 흘러가는 듯한 아주 느린 움직임 */
-@keyframes hero-drift {
-  from {
-    transform: scale(1.04) translate3d(0, 0, 0);
-  }
-  to {
-    transform: scale(1.06) translate3d(-1.2%, -0.6%, 0);
-  }
-}
-
-@utility animate-hero-drift {
-  animation: hero-drift 38s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-/* 스크롤 시 부드러운 페이드 인 + 약한 위쪽 이동 */
-@utility reveal {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-  &[data-visible="true"] {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .animate-hero-drift {
-    animation: none;
-    transform: none;
   }
 }

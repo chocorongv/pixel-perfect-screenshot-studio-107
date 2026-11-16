@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, BadgeCheck, Mail, Phone } from "lucide-react";
+import { Mail, Phone, ArrowDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/portfolio/Reveal";
 import { Section } from "@/components/portfolio/Section";
 import {
   about,
@@ -44,7 +43,7 @@ function Index() {
         <Hero />
 
         <Section id="about" index="01" label="About Me" title="소개">
-          <div className="space-y-6 text-base leading-8 text-muted-foreground md:text-[1.05rem]">
+          <div className="space-y-5 text-base leading-8 text-muted-foreground">
             {about.map((p) => (
               <p key={p.slice(0, 12)}>{p}</p>
             ))}
@@ -52,35 +51,23 @@ function Index() {
         </Section>
 
         <Section id="strengths" index="02" label="Strengths" title="핵심 역량" muted>
-          <ul className="grid gap-5 sm:grid-cols-2">
-            {strengths.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <Reveal
-                  as="li"
-                  key={s.title}
-                  delay={(i % 2) * 80}
-                  className="rounded-2xl border border-border bg-card p-7 shadow-soft"
-                >
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-teal">
-                    <Icon className="h-5 w-5" strokeWidth={1.5} />
-                  </span>
-                  <h3 className="mt-5 font-semibold text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{s.body}</p>
-                </Reveal>
-              );
-            })}
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {strengths.map((s, i) => (
+              <li key={s.title} className="rounded-lg border border-border bg-card p-6">
+                <span className="text-xs font-semibold text-primary tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-semibold text-foreground">{s.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{s.body}</p>
+              </li>
+            ))}
           </ul>
         </Section>
 
         <Section id="experience" index="03" label="Experience" title="주요 경험">
-          <ol className="relative space-y-14 border-l border-sky/40 pl-8">
+          <ol className="space-y-12">
             {experiences.map((e) => (
-              <Reveal as="li" key={e.company} className="relative">
-                <span
-                  className="absolute top-2 -left-[2.34rem] h-3 w-3 rounded-full border-2 border-background bg-primary ring-4 ring-accent"
-                  aria-hidden
-                />
+              <li key={e.company} className="border-l-2 border-primary/20 pl-6">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="text-lg font-bold text-foreground">{e.company}</h3>
                   <span className="text-sm text-muted-foreground tabular-nums">{e.period}</span>
@@ -90,33 +77,33 @@ function Index() {
                 <ul className="mt-3 space-y-2">
                   {e.points.map((pt) => (
                     <li key={pt} className="flex gap-3 text-sm leading-6 text-muted-foreground">
-                      <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-teal" />
+                      <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
                       {pt}
                     </li>
                   ))}
                 </ul>
-              </Reveal>
+              </li>
             ))}
           </ol>
         </Section>
 
         <Section id="games" index="04" label="Games" title="게임 경험과 관심" muted>
-          <p className="text-base leading-8 text-muted-foreground md:text-[1.05rem]">{games.intro}</p>
-          <ul className="mt-10 divide-y divide-border rounded-2xl border border-border bg-card shadow-soft">
+          <p className="text-base leading-8 text-muted-foreground">{games.intro}</p>
+          <ul className="mt-8 divide-y divide-border rounded-lg border border-border bg-card">
             {games.played.map((g) => (
-              <li key={g.title} className="flex flex-col gap-1 px-7 py-5 sm:flex-row sm:gap-6">
+              <li key={g.title} className="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
                 <span className="w-40 shrink-0 font-semibold text-foreground">{g.title}</span>
                 <span className="text-sm leading-6 text-muted-foreground">{g.note}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-10">
+          <div className="mt-8">
             <p className="text-sm font-medium text-foreground">특히 관심 있는 것</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {games.interests.map((t) => (
                 <li
                   key={t}
-                  className="rounded-full border border-border bg-card px-4 py-1.5 text-sm text-accent-foreground"
+                  className="rounded-full bg-accent px-3 py-1 text-sm text-accent-foreground"
                 >
                   {t}
                 </li>
@@ -126,13 +113,13 @@ function Index() {
         </Section>
 
         <Section id="credentials" index="05" label="Credentials" title="자격 및 기타">
-          <ul className="grid gap-x-8 gap-y-1 sm:grid-cols-2">
+          <ul className="grid gap-3 sm:grid-cols-2">
             {credentials.map((c) => (
               <li
                 key={c}
-                className="flex items-center gap-3 border-b border-border py-4 text-foreground"
+                className="flex items-center gap-3 border-b border-border py-3 text-foreground"
               >
-                <BadgeCheck className="h-5 w-5 shrink-0 text-teal" strokeWidth={1.5} />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 {c}
               </li>
             ))}
@@ -141,7 +128,7 @@ function Index() {
 
         <Contact />
       </main>
-      <footer className="bg-background py-8 text-center text-xs text-muted-foreground">
+      <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} {profile.name}
       </footer>
     </div>
@@ -150,12 +137,12 @@ function Index() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-border/70 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-20 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
         <a href="#top" className="font-bold tracking-tight text-foreground">
           {profile.name}
         </a>
-        <nav className="hidden gap-7 md:flex">
+        <nav className="hidden gap-6 md:flex">
           {navItems.map((n) => (
             <a
               key={n.id}
@@ -173,45 +160,34 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-navy">
-      <img
-        src={hero.image.large}
-        srcSet={`${hero.image.small} 960w, ${hero.image.large} 1672w`}
-        sizes="100vw"
-        alt={hero.image.alt}
-        fetchPriority="high"
-        className="animate-hero-drift absolute inset-0 -z-20 h-full w-full object-cover object-[68%_center] md:object-center"
-      />
-      <div className="hero-overlay absolute inset-0 -z-10" aria-hidden />
-      <div className="mx-auto grid min-h-[min(calc(100svh-3.5rem),820px)] max-w-5xl items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:py-24 lg:gap-16">
-        <Reveal className="text-primary-foreground">
-          <p className="hero-text-shadow text-xs font-semibold tracking-[0.18em] uppercase opacity-90">
+    <section id="top" className="bg-background">
+      <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 pt-20 pb-20 md:grid-cols-[1.1fr_0.9fr] md:gap-10 md:pt-24 md:pb-24 lg:gap-16">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
             {hero.eyebrow}
           </p>
-          <h1 className="hero-text-shadow mt-5 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 text-5xl font-bold tracking-tight text-primary sm:text-6xl md:text-6xl lg:text-7xl">
             {hero.title.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>
             ))}
           </h1>
-          <p className="hero-text-shadow mt-7 max-w-[34rem] text-base leading-8 opacity-95 md:text-lg">
+          <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground md:text-lg">
             {hero.lead}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="h-11 rounded-lg px-7">
+            <Button asChild size="lg">
               <a href="#experience">
-                경험 보기 <ArrowDown strokeWidth={1.75} />
+                경험 보기 <ArrowDown />
               </a>
             </Button>
-            <Button asChild size="lg" variant="glass" className="h-11 rounded-lg px-7">
+            <Button asChild size="lg" variant="outline">
               <a href="#contact">연락하기</a>
             </Button>
           </div>
-        </Reveal>
-        <Reveal delay={150}>
-          <StrengthCard />
-        </Reveal>
+        </div>
+        <StrengthCard />
       </div>
     </section>
   );
@@ -219,21 +195,20 @@ function Hero() {
 
 function StrengthCard() {
   return (
-    <aside className="rounded-2xl border border-card/60 bg-card/90 p-6 shadow-lifted backdrop-blur-md md:p-7">
-      <p className="text-xs font-semibold tracking-[0.18em] text-teal uppercase">
+    <aside className="rounded-xl border border-border bg-card p-5 shadow-sm md:p-6">
+      <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
         {hero.card.eyebrow}
       </p>
       <h2 className="mt-2 text-base font-bold tracking-tight text-foreground">{hero.card.title}</h2>
       <ul className="mt-4 space-y-2.5 border-t border-border pt-4">
-        {strengths.map((s) => {
-          const Icon = s.icon;
-          return (
-            <li key={s.title} className="flex items-center gap-3">
-              <Icon className="h-4 w-4 shrink-0 text-primary" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-foreground">{s.title}</span>
-            </li>
-          );
-        })}
+        {strengths.map((s, i) => (
+          <li key={s.title} className="flex items-center gap-3">
+            <span className="text-xs font-semibold text-primary tabular-nums">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="text-sm font-medium text-foreground">{s.title}</span>
+          </li>
+        ))}
       </ul>
     </aside>
   );
@@ -241,23 +216,18 @@ function StrengthCard() {
 
 function Contact() {
   return (
-    <section id="contact" className="bg-deep scroll-mt-16 text-primary-foreground">
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <Reveal>
-          <p className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.18em] uppercase opacity-75">
-            <span className="h-px w-6 bg-primary-foreground/60" aria-hidden />
-            06 · Contact
-          </p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight md:text-3xl">
-            함께 이야기 나누고 싶습니다.
-          </h2>
-        </Reveal>
-        <Reveal delay={100} className="mt-10 grid gap-4 sm:grid-cols-2">
+    <section id="contact" className="scroll-mt-16 bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+        <p className="text-xs font-semibold tracking-[0.18em] uppercase opacity-70">06 · Contact</p>
+        <h2 className="mt-3 text-2xl font-bold tracking-tight md:text-3xl">
+          함께 이야기 나누고 싶습니다.
+        </h2>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
           <a
             href={`tel:${profile.phone.replace(/-/g, "")}`}
-            className="flex items-center gap-4 rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 p-6 transition-colors hover:bg-primary-foreground/10"
+            className="flex items-center gap-4 rounded-lg border border-primary-foreground/20 p-5 transition-colors hover:bg-primary-foreground/10"
           >
-            <Phone className="h-5 w-5 opacity-80" strokeWidth={1.5} />
+            <Phone className="h-5 w-5 opacity-80" />
             <div>
               <p className="text-xs opacity-70">전화</p>
               <p className="mt-1 font-medium tabular-nums">{profile.phone}</p>
@@ -265,15 +235,15 @@ function Contact() {
           </a>
           <a
             href={`mailto:${profile.email}`}
-            className="flex items-center gap-4 rounded-2xl border border-primary-foreground/20 bg-primary-foreground/5 p-6 transition-colors hover:bg-primary-foreground/10"
+            className="flex items-center gap-4 rounded-lg border border-primary-foreground/20 p-5 transition-colors hover:bg-primary-foreground/10"
           >
-            <Mail className="h-5 w-5 opacity-80" strokeWidth={1.5} />
+            <Mail className="h-5 w-5 opacity-80" />
             <div>
               <p className="text-xs opacity-70">이메일</p>
               <p className="mt-1 font-medium">{profile.email}</p>
             </div>
           </a>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
