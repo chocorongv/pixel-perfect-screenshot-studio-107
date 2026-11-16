@@ -8,8 +8,8 @@ export const profile = {
 
 export const hero = {
   eyebrow: "Game Business PM · Live Operations",
-  title: ["플레이어가 오래 머물고 싶은", "게임 경험을 고민하는 운영 인재,", "박정우입니다."],
-  lead: "현장 운영 경험과 고객 응대 역량을 바탕으로, 게임의 세계관과 플레이 경험을 더 풍부하게 만드는 게임 사업 PM·운영 담당자가 되고 싶습니다.",
+  title: ["박정우입니다."],
+  lead: "플레이어가 오래 머물고 싶은 게임 경험을 고민하는 운영 인재입니다. 현장 운영 경험과 고객 응대 역량을 바탕으로, 게임의 세계관과 플레이 경험을 더 풍부하게 만드는 게임 사업 PM·운영 담당자가 되고 싶습니다.",
 };
 
 export const about = [
