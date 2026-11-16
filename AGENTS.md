@@ -33,3 +33,4 @@ use the editor.
 
 - All portfolio copy lives in `src/content/portfolio.ts`; page sections only render that data, so text edits never touch layout code.
 - Visual tone is controlled solely by the color/font tokens in `src/styles.css` (`:root` + `@theme inline`); components use semantic classes only, so a re-theme is a token change.
+- Scroll fade-in uses `src/components/portfolio/Reveal.tsx` (IntersectionObserver, respects reduced motion) and section moods use `Section`'s `tone` prop plus `@utility` effects in `src/styles.css`; no animation library, keeping motion minimal and dependency-free.

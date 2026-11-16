@@ -40,6 +40,12 @@
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-violet: var(--surface-violet);
+  --color-violet: var(--violet);
+  --color-indigo: var(--indigo);
+  --color-star: var(--star);
+  --shadow-card: var(--shadow-card-value);
+  --shadow-glow: var(--shadow-glow-value);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -75,41 +81,50 @@
 }
 
 :root {
-  /* 디자인 톤은 이 블록의 값만 바꾸면 전체에 반영됩니다. */
-  --radius: 0.5rem;
-  --background: oklch(0.995 0.002 250);
-  --surface: oklch(0.975 0.004 250);
-  --foreground: oklch(0.22 0.03 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.03 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.03 260);
-  --primary: oklch(0.32 0.08 260);
-  --primary-foreground: oklch(0.98 0.005 250);
-  --secondary: oklch(0.96 0.008 250);
-  --secondary-foreground: oklch(0.28 0.06 260);
-  --muted: oklch(0.96 0.006 250);
-  --muted-foreground: oklch(0.48 0.025 258);
-  --accent: oklch(0.94 0.02 255);
-  --accent-foreground: oklch(0.32 0.08 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.91 0.008 255);
-  --input: oklch(0.88 0.01 255);
-  --ring: oklch(0.32 0.08 260);
+  /* 디자인 톤은 이 블록의 값만 바꾸면 전체에 반영됩니다. — 신비로운 밤 · 은은한 빛 */
+  --radius: 0.75rem;
+  --background: oklch(0.155 0.042 274);
+  --surface: oklch(0.18 0.055 280);
+  --surface-violet: oklch(0.215 0.075 292);
+  --foreground: oklch(0.96 0.014 268);
+  --card: oklch(0.2 0.055 280 / 0.55);
+  --card-foreground: oklch(0.96 0.014 268);
+  --popover: oklch(0.19 0.05 278);
+  --popover-foreground: oklch(0.96 0.014 268);
+  --primary: oklch(0.8 0.1 296);
+  --primary-foreground: oklch(0.17 0.045 276);
+  --secondary: oklch(0.24 0.06 282);
+  --secondary-foreground: oklch(0.92 0.03 290);
+  --muted: oklch(0.22 0.05 280);
+  --muted-foreground: oklch(0.79 0.032 285);
+  --accent: oklch(0.3 0.085 292 / 0.55);
+  --accent-foreground: oklch(0.9 0.055 296);
+  --destructive: oklch(0.65 0.2 22);
+  --destructive-foreground: oklch(0.98 0.005 260);
+  --border: oklch(0.75 0.1 296 / 0.18);
+  --border-accent: oklch(0.8 0.1 296 / 0.38);
+  --input: oklch(0.75 0.1 296 / 0.3);
+  --ring: oklch(0.8 0.1 296);
+  --violet: oklch(0.56 0.17 292);
+  --indigo: oklch(0.4 0.14 275);
+  --glow: oklch(0.7 0.16 296 / 0.45);
+  --star: oklch(0.98 0.012 280);
+  --gradient-button: linear-gradient(135deg, var(--violet), var(--indigo));
+  --shadow-card-value: 0 10px 30px -14px oklch(0.08 0.04 280 / 0.8);
+  --shadow-glow-value: 0 8px 24px -10px var(--glow);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.18 0.055 280);
+  --sidebar-foreground: oklch(0.96 0.014 268);
+  --sidebar-primary: oklch(0.8 0.1 296);
+  --sidebar-primary-foreground: oklch(0.17 0.045 276);
+  --sidebar-accent: oklch(0.24 0.06 282);
+  --sidebar-accent-foreground: oklch(0.96 0.014 268);
+  --sidebar-border: oklch(0.75 0.1 296 / 0.18);
+  --sidebar-ring: oklch(0.8 0.1 296);
 }
 
 .dark {
@@ -154,6 +169,12 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--foreground);
   }
 
   body {
@@ -162,5 +183,113 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     word-break: keep-all;
+  }
+}
+
+/* ---------- 신비로운 밤 효과 (은은하게, 읽기를 방해하지 않도록) ---------- */
+
+@utility glass {
+  background-color: var(--glass-bg, var(--card));
+  border: 1px solid var(--glass-border, var(--border));
+  box-shadow: var(--shadow-card-value);
+  backdrop-filter: blur(14px) saturate(120%);
+}
+
+@utility bg-button-gradient {
+  background-image: var(--gradient-button);
+}
+
+/* 호버 시 아주 약한 광택 */
+@utility sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 35%, oklch(1 0 0 / 0.12) 50%, transparent 65%);
+    transform: translateX(-110%);
+    transition: transform 0.9s ease;
+    pointer-events: none;
+  }
+  &:hover::after {
+    transform: translateX(110%);
+  }
+}
+
+@utility icon-glow {
+  filter: drop-shadow(0 0 6px var(--glow));
+}
+
+@utility title-glow {
+  text-shadow: 0 0 28px oklch(0.7 0.16 296 / 0.35), 0 2px 12px oklch(0.1 0.04 275 / 0.6);
+}
+
+@utility text-legible {
+  text-shadow: 0 1px 10px oklch(0.1 0.04 275 / 0.85);
+}
+
+/* 아주 작은 별빛 입자 — 타일 패턴 두 겹 */
+@utility starfield {
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, oklch(0.98 0.012 280 / 0.7), transparent 60%),
+    radial-gradient(1px 1px at 68% 32%, oklch(0.98 0.012 280 / 0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 38% 74%, oklch(0.85 0.09 296 / 0.6), transparent 60%),
+    radial-gradient(1px 1px at 86% 82%, oklch(0.98 0.012 280 / 0.45), transparent 60%),
+    radial-gradient(1px 1px at 52% 52%, oklch(0.98 0.012 280 / 0.35), transparent 60%),
+    radial-gradient(1px 1px at 24% 92%, oklch(0.85 0.09 296 / 0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 92% 8%, oklch(0.98 0.012 280 / 0.55), transparent 60%),
+    radial-gradient(1px 1px at 6% 56%, oklch(0.98 0.012 280 / 0.4), transparent 60%);
+  background-size: 340px 340px;
+  animation: star-drift 70s ease-in-out infinite alternate;
+}
+
+/* 흐릿한 보랏빛 광원 / 안개 */
+@utility nebula {
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, var(--glow), transparent);
+  filter: blur(40px);
+  animation: nebula-breathe 26s ease-in-out infinite alternate;
+}
+
+@utility bg-night-gradient {
+  background-image: linear-gradient(180deg, var(--background) 0%, var(--surface) 45%, var(--surface-violet) 100%);
+}
+
+@utility bg-closing-gradient {
+  background-image: linear-gradient(180deg, var(--surface-violet) 0%, var(--background) 38%, var(--background) 100%);
+}
+
+@keyframes star-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.75;
+  }
+  to {
+    transform: translate3d(-10px, -16px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes nebula-breathe {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield,
+  .nebula {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }
