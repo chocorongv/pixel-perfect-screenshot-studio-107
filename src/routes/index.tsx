@@ -195,21 +195,18 @@ function Hero() {
 
 function StrengthCard() {
   return (
-    <aside className="rounded-xl border border-border bg-card p-6 shadow-sm md:p-7">
+    <aside className="rounded-xl border border-border bg-card p-5 shadow-sm md:p-6">
       <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
         {hero.card.eyebrow}
       </p>
-      <h2 className="mt-2 text-lg font-bold tracking-tight text-foreground">{hero.card.title}</h2>
-      <ul className="mt-6 space-y-4 border-t border-border pt-6">
+      <h2 className="mt-2 text-base font-bold tracking-tight text-foreground">{hero.card.title}</h2>
+      <ul className="mt-4 space-y-2.5 border-t border-border pt-4">
         {strengths.map((s, i) => (
-          <li key={s.title} className="flex gap-3">
-            <span className="mt-0.5 text-xs font-semibold text-primary tabular-nums">
+          <li key={s.title} className="flex items-center gap-3">
+            <span className="text-xs font-semibold text-primary tabular-nums">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div>
-              <p className="text-sm font-semibold text-foreground">{s.title}</p>
-              <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{s.body}</p>
-            </div>
+            <span className="text-sm font-medium text-foreground">{s.title}</span>
           </li>
         ))}
       </ul>
