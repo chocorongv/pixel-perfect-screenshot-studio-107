@@ -3,8 +3,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * 스크롤 시 천천히 페이드 인. 첫 화면에 이미 보이는 요소는 그대로 두고,
- * 아래쪽 요소만 살짝 숨겼다가 나타나게 합니다. 모션 최소화 설정을 존중합니다.
+ * 스크롤로 섹션을 옮겨 갈 때 천천히 페이드 인, 화면 밖으로 나갈 때 부드럽게 페이드 아웃.
+ * 화면 위로 나가면 살짝 위로, 아래로 나가면 살짝 아래로 사라집니다.
+ * 모션 최소화 설정에서는 항상 그대로 보입니다.
  */
 export function Reveal({
   children,
@@ -18,35 +19,37 @@ export function Reveal({
   as?: "div" | "li";
 }) {
   const ref = useRef<HTMLElement | null>(null);
-  const [state, setState] = useState<"idle" | "hidden" | "shown">("idle");
+  const [state, setState] = useState<"idle" | "above" | "below" | "shown">("idle");
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.92) return;
-    setState("hidden");
     const io = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setState("shown");
-          io.disconnect();
-        }
+        const entry = entries[entries.length - 1];
+        if (!entry) return;
+        if (entry.isIntersecting) setState("shown");
+        else setState(entry.boundingClientRect.top < 0 ? "above" : "below");
       },
-      { rootMargin: "0px 0px -8% 0px" },
+      { rootMargin: "-4% 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  const hidden = state === "above" || state === "below";
 
   return (
     <Tag
       ref={ref as never}
       style={state === "shown" && delay ? { transitionDelay: `${delay}ms` } : undefined}
       className={cn(
-        state === "hidden" && "translate-y-3 opacity-0",
-        state === "shown" && "translate-y-0 opacity-100 transition duration-1000 ease-out",
+        state !== "idle" && "transition-[opacity,translate] ease-out",
+        state === "shown" && "translate-y-0 opacity-100 duration-1000",
+        hidden && "opacity-0 duration-500",
+        state === "above" && "-translate-y-3",
+        state === "below" && "translate-y-3",
         className,
       )}
     >
