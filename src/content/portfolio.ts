@@ -96,7 +96,7 @@ export const navItems = [
   { id: "about", label: "About" },
   { id: "strengths", label: "역량" },
   { id: "experience", label: "경험" },
-  { id: "games", label: "게임" },
+  { id: "games", label: "Games" },
   { id: "credentials", label: "자격" },
   { id: "contact", label: "Contact" },
 ];
