@@ -1,9 +1,12 @@
+import { useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone, ArrowDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/portfolio/Reveal";
 import { Section } from "@/components/portfolio/Section";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { cn } from "@/lib/utils";
 import coverAsset from "@/assets/moonlit_flower_field.jpg.asset.json";
 import {
   about,
@@ -170,6 +173,9 @@ function ClosingLights() {
 }
 
 function Header() {
+  const ids = useMemo(() => navItems.map((n) => n.id), []);
+  const active = useActiveSection(ids);
+
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background/70 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
@@ -177,15 +183,29 @@ function Header() {
           {profile.name}
         </a>
         <nav className="hidden gap-6 md:flex">
-          {navItems.map((n) => (
-            <a
-              key={n.id}
-              href={`#${n.id}`}
-              className="text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              {n.label}
-            </a>
-          ))}
+          {navItems.map((n) => {
+            const isActive = active === n.id;
+            return (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                aria-current={isActive ? "true" : undefined}
+                className={cn(
+                  "relative py-1 text-sm transition-colors hover:text-primary",
+                  isActive ? "text-primary" : "text-muted-foreground",
+                )}
+              >
+                {n.label}
+                <span
+                  aria-hidden
+                  className={cn(
+                    "absolute -bottom-0.5 left-0 h-px w-full origin-left rounded-full bg-primary transition-transform duration-300",
+                    isActive ? "scale-x-100" : "scale-x-0",
+                  )}
+                />
+              </a>
+            );
+          })}
         </nav>
       </div>
     </header>
