@@ -210,7 +210,7 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="mx-auto grid max-w-5xl gap-10 px-6 pt-[46svh] pb-20 md:min-h-[calc(100svh-3.5rem)] md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-10 md:py-24 lg:gap-16">
+      <div className="mx-auto grid max-w-5xl gap-10 px-6 pt-[46svh] pb-20 md:min-h-[calc(100svh-3.5rem)] md:grid-cols-[1.1fr_0.9fr] md:items-start md:gap-10 md:py-24 lg:gap-16">
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-1000">
           <p className="text-legible text-xs font-semibold tracking-[0.18em] text-primary uppercase">
             {hero.eyebrow}
@@ -244,7 +244,7 @@ function Hero() {
 
 function StrengthCard() {
   return (
-    <aside className="glass w-full rounded-xl p-5 [--glass-bg:color-mix(in_oklab,var(--background)_60%,transparent)] animate-in fade-in duration-1000 md:max-w-xs md:self-end md:justify-self-end md:p-6">
+    <aside className="glass w-full rounded-xl p-5 [--glass-bg:color-mix(in_oklab,var(--background)_60%,transparent)] animate-in fade-in duration-1000 md:max-w-xs md:justify-self-end md:p-6">
       <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
         {hero.card.eyebrow}
       </p>
