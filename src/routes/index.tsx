@@ -210,33 +210,36 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="mx-auto grid max-w-5xl gap-10 px-6 pt-[46svh] pb-20 md:min-h-[calc(100svh-3.5rem)] md:grid-cols-[1.1fr_0.9fr] md:items-start md:gap-10 md:py-24 lg:gap-16">
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-1000">
-          <p className="text-legible text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-            {hero.eyebrow}
-          </p>
-          <h1 className="title-glow mt-5 text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-6xl lg:text-7xl">
-            {hero.title.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </h1>
-          <p className="text-legible mt-7 max-w-xl text-base leading-8 text-muted-foreground md:text-lg">
-            {hero.lead}
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <a href="#experience">
-                경험 보기 <ArrowDown />
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href="#contact">연락하기</a>
-            </Button>
+      {/* 데스크톱: 소개글과 핵심 역량 카드 전체를 화면 세로 중앙에 배치 */}
+      <div className="md:flex md:min-h-[calc(100svh-3.5rem)] md:items-center">
+        <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 pt-[46svh] pb-20 md:grid-cols-[1.1fr_0.9fr] md:items-start md:gap-10 md:py-16 lg:gap-16">
+          <div className="animate-in fade-in slide-in-from-bottom-2 duration-1000">
+            <p className="text-legible text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+              {hero.eyebrow}
+            </p>
+            <h1 className="title-glow mt-5 text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-6xl lg:text-7xl">
+              {hero.title.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </h1>
+            <p className="text-legible mt-7 max-w-xl text-base leading-8 text-muted-foreground md:text-lg">
+              {hero.lead}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <a href="#experience">
+                  경험 보기 <ArrowDown />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="#contact">연락하기</a>
+              </Button>
+            </div>
           </div>
+          <StrengthCard />
         </div>
-        <StrengthCard />
       </div>
     </section>
   );
