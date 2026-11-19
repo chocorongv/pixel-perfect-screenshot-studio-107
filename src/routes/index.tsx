@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, ArrowDown } from "lucide-react";
+import { Mail, Phone, ArrowDown, Search, Compass, Heart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/portfolio/Reveal";
@@ -9,7 +9,8 @@ import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 import coverAsset from "@/assets/moonlit_flower_field.jpg.asset.json";
 import {
-  about,
+  aboutLessons,
+  aboutWants,
   credentials,
   experiences,
   games,
@@ -40,6 +41,82 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const wantIcons = {
+  search: Search,
+  compass: Compass,
+  heart: Heart,
+} as const;
+
+function About() {
+  return (
+    <section id="about" className="relative isolate scroll-mt-16 overflow-hidden bg-background">
+      <div className="mx-auto max-w-5xl px-6 py-28 md:py-36">
+        <Reveal>
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+            01 · About Me
+          </p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            경험으로 배운 운영의 기준
+          </h2>
+          <span aria-hidden className="mt-4 block h-px w-10 bg-primary/50" />
+        </Reveal>
+
+        <ol className="mt-12 space-y-5">
+          {aboutLessons.map((l, i) => (
+            <Reveal
+              as="li"
+              key={l.number}
+              delay={i * 100}
+              className="glass rounded-xl p-6 [--glass-border:var(--border-accent)] shadow-glow md:p-8"
+            >
+              <div className="grid gap-3 md:grid-cols-[minmax(0,15rem)_1fr] md:gap-8">
+                <div className="min-w-0">
+                  <span className="text-xs font-semibold text-primary tabular-nums">{l.number}</span>
+                  <h3 className="mt-2 text-lg font-bold text-foreground">{l.title}</h3>
+                </div>
+                <p className="min-w-0 text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
+                  {l.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal className="mt-24 md:mt-32">
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+            01 · What I Want to Do
+          </p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            게임에서 하고 싶은 일
+          </h2>
+          <span aria-hidden className="mt-4 block h-px w-10 bg-primary/50" />
+        </Reveal>
+
+        <ul className="mt-12 grid gap-5 md:grid-cols-3">
+          {aboutWants.map((w, i) => {
+            const Icon = wantIcons[w.icon];
+            return (
+              <Reveal
+                as="li"
+                key={w.number}
+                delay={i * 100}
+                className="glass flex flex-col rounded-xl p-6 shadow-glow"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-primary tabular-nums">{w.number}</span>
+                  <Icon className="icon-glow h-5 w-5 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="mt-5 text-base font-bold text-foreground">{w.title}</h3>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">{w.body}</p>
+              </Reveal>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,15 +124,7 @@ function Index() {
       <main>
         <Hero />
 
-        <Section id="about" index="01" label="About Me" title="소개" tone="calm">
-          <div className="max-w-2xl space-y-6 text-base leading-8 text-muted-foreground">
-            {about.map((p, i) => (
-              <Reveal key={p.slice(0, 12)} delay={i * 120}>
-                <p>{p}</p>
-              </Reveal>
-            ))}
-          </div>
-        </Section>
+        <About />
 
         <Section id="strengths" index="02" label="Strengths" title="핵심 역량" tone="mist">
           <ul className="grid gap-4 sm:grid-cols-2">

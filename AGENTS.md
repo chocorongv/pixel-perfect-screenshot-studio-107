@@ -34,3 +34,4 @@ use the editor.
 - All portfolio copy lives in `src/content/portfolio.ts`; page sections only render that data, so text edits never touch layout code.
 - Visual tone is controlled solely by the color/font tokens in `src/styles.css` (`:root` + `@theme inline`); components use semantic classes only, so a re-theme is a token change.
 - Scroll fade-in/fade-out uses `src/components/portfolio/Reveal.tsx` (IntersectionObserver, bidirectional, respects reduced motion) and section moods use `Section`'s `tone` prop plus `@utility` effects in `src/styles.css`; no animation library, keeping motion minimal and dependency-free.
+- The 소개 page (`About` in `src/routes/index.tsx`) renders its two headed blocks directly instead of the `Section` component, because its long Korean headings need the full container width; its copy is `aboutLessons` and `aboutWants` in `src/content/portfolio.ts`.
