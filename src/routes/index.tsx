@@ -53,7 +53,7 @@ function About() {
       <div className="mx-auto max-w-5xl px-6 py-28 md:py-36">
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-            01 · About Me
+            About Me
           </p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             경험으로 배운 운영의 기준
@@ -84,7 +84,7 @@ function About() {
 
         <Reveal className="mt-24 md:mt-32">
           <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-            01 · What I Want to Do
+            What I Want to Do
           </p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             작은 재미를 발견하고, 플레이어의 경험을 살펴 더 나은 게임으로 연결합니다
