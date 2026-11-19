@@ -74,7 +74,7 @@ function About() {
                   <span className="text-xs font-semibold text-primary tabular-nums">{l.number}</span>
                   <h3 className="mt-2 text-lg font-bold text-foreground">{l.title}</h3>
                 </div>
-                <p className="min-w-0 text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
+                <p className="min-w-0 whitespace-pre-line text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
                   {l.body}
                 </p>
               </div>
