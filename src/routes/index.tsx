@@ -87,7 +87,7 @@ function About() {
             01 · What I Want to Do
           </p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            게임에서 하고 싶은 일
+            작은 재미를 발견하고, 플레이어의 경험을 살펴 더 나은 게임으로 연결합니다
           </h2>
           <span aria-hidden className="mt-4 block h-px w-10 bg-primary/50" />
         </Reveal>
