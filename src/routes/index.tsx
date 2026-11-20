@@ -53,7 +53,7 @@ function About() {
       <div className="mx-auto max-w-5xl px-6 py-28 md:py-36">
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-            About Me
+            01 · About Me
           </p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             경험으로 배운 운영의 기준
